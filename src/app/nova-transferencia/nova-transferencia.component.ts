@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Transferencia } from './../models/transferencia.model';
 import { TransferenceService } from './../services/transference.service';
 import { Component, EventEmitter, Output } from '@angular/core';
@@ -14,7 +15,7 @@ export class NovaTransferenciaComponent {
   value: number;
   destiny: number;
 
-  constructor(private service: TransferenceService){
+  constructor(private service: TransferenceService, private router: Router){
 
   }
 
@@ -26,6 +27,7 @@ export class NovaTransferenciaComponent {
       (result) => {
         console.log(result);
         this.cleanForm();
+        this.router.navigateByUrl('extrato');
       },
       (error) => { console.error(error) }
     );
